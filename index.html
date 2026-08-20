@@ -1,57 +1,53 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Escolar</title>
+.opcao {
+    width: 100%;
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    padding: 18px 20px;
 
-<body>
+    background: #f7f3ff;
 
-    <div class="container">
+    border: 3px solid #6a11cb;
 
-        <div id="quiz">
+    border-radius: 12px;
 
-            <h1>🏆 Quiz Escolar</h1>
+    cursor: pointer;
 
-            <div class="topo">
-                <span id="contador">Pergunta 1 de 10</span>
-                <span id="pontuacao">Pontos: 0</span>
-            </div>
+    font-size: 18px;
 
-            <div class="barra">
-                <div id="progresso"></div>
-            </div>
+    font-weight: bold;
 
-            <h2 id="pergunta">Pergunta</h2>
+    color: #222;
 
-            <div id="opcoes"></div>
+    text-align: left;
 
-            <button id="botaoProximo" disabled>
-                Próxima pergunta
-            </button>
+    transition: 0.2s;
 
-        </div>
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
 
-        <div id="resultado" class="escondido">
+.opcao:hover {
+    background: #e5d4ff;
 
-            <h1>🎉 Fim do Quiz!</h1>
+    border-color: #4b0082;
 
-            <h2 id="pontuacaoFinal"></h2>
+    transform: scale(1.02);
+}
 
-            <p id="mensagemFinal"></p>
+.opcao.correta {
+    background: #70e080 !important;
 
-            <button id="botaoReiniciar">
-                Jogar novamente
-            </button>
+    border-color: #16852b;
 
-        </div>
+    color: #083b12;
 
-    </div>
+    font-weight: bold;
+}
 
-    <script src="script.js"></script>
+.opcao.errada {
+    background: #ff7777 !important;
 
-</body>
-</html>
+    border-color: #b30000;
+
+    color: #5c0000;
+
+    font-weight: bold;
+}
