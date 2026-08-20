@@ -1,3 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #6a11cb,
+        #2575fc
+    );
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+
+    color: #4b0082;
+
+    margin-bottom: 25px;
+}
+
+.topo {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #555;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.barra {
+    width: 100%;
+
+    height: 10px;
+
+    background: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+#progresso {
+    width: 10%;
+
+    height: 100%;
+
+    background: #6a11cb;
+
+    transition: 0.3s;
+}
+
+#pergunta {
+    font-size: 22px;
+
+    color: #222;
+
+    margin-bottom: 20px;
+}
+
+#opcoes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+/* ALTERNATIVAS */
+
 .opcao {
     width: 100%;
 
@@ -32,6 +131,8 @@
     transform: scale(1.02);
 }
 
+/* RESPOSTA CORRETA */
+
 .opcao.correta {
     background: #70e080 !important;
 
@@ -42,6 +143,8 @@
     font-weight: bold;
 }
 
+/* RESPOSTA ERRADA */
+
 .opcao.errada {
     background: #ff7777 !important;
 
@@ -50,4 +153,88 @@
     color: #5c0000;
 
     font-weight: bold;
+}
+
+/* BOTÕES */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #6a11cb;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4b0082;
+}
+
+button:disabled {
+    background: #aaa;
+
+    cursor: not-allowed;
+}
+
+/* RESULTADO */
+
+#resultado {
+    text-align: center;
+}
+
+#resultado h1 {
+    color: #28a745;
+}
+
+#pontuacaoFinal {
+    margin: 20px 0;
+
+    font-size: 28px;
+}
+
+#mensagemFinal {
+    font-size: 20px;
+
+    color: #555;
+}
+
+.escondido {
+    display: none;
+}
+
+/* CELULAR */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #pergunta {
+        font-size: 19px;
+    }
+
+    .opcao {
+        font-size: 17px;
+
+        padding: 16px;
+    }
+
 }
