@@ -14,13 +14,24 @@
 
     <div class="container">
 
+        <!-- JOGO -->
+
         <div id="quiz">
 
             <h1>🏆 Quiz Escolar</h1>
 
+            <div class="nivel" id="nivel">
+                🟢 Nível Fácil
+            </div>
+
             <div class="topo">
-                <span id="contador">Pergunta 1 de 10</span>
-                <span id="pontuacao">Pontos: 0</span>
+                <span id="contador">
+                    Pergunta 1 de 10
+                </span>
+
+                <span id="pontuacao">
+                    Pontos: 0
+                </span>
             </div>
 
             <div class="barra">
@@ -37,11 +48,37 @@
 
         </div>
 
+
+        <!-- TRANSIÇÃO DE NÍVEL -->
+
+        <div id="transicao" class="escondido">
+
+            <h1 id="tituloTransicao">
+                🎉 Nível concluído!
+            </h1>
+
+            <p id="textoTransicao"></p>
+
+            <button id="botaoNivel">
+                Continuar
+            </button>
+
+        </div>
+
+
+        <!-- RESULTADO FINAL -->
+
         <div id="resultado" class="escondido">
 
-            <h1>🎉 Quiz Finalizado!</h1>
+            <h1>🏆 Quiz Finalizado!</h1>
 
             <h2 id="pontuacaoFinal"></h2>
+
+            <p id="resultadoFacil"></p>
+
+            <p id="resultadoMedio"></p>
+
+            <p id="resultadoDificil"></p>
 
             <p id="mensagemFinal"></p>
 
@@ -52,6 +89,7 @@
         </div>
 
     </div>
+
 
     <script src="script.js"></script>
 
