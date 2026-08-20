@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Conhecimentos Gerais</title>
+    <title>Quiz Escolar</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
-        <div id="quiz">
-            <h1>🏆 Quiz de Conhecimentos Gerais</h1>
 
-            <div class="info">
+        <div id="quiz">
+
+            <h1>🏆 Quiz Escolar</h1>
+
+            <div class="topo">
                 <span id="contador">Pergunta 1 de 10</span>
                 <span id="pontuacao">Pontos: 0</span>
             </div>
@@ -23,21 +27,31 @@
 
             <h2 id="pergunta">Pergunta</h2>
 
-            <div id="opcoes" class="opcoes"></div>
+            <div id="opcoes"></div>
 
-            <button id="proxima" onclick="proximaPergunta()" disabled>
+            <button id="botaoProximo" disabled>
                 Próxima pergunta
             </button>
+
         </div>
 
-        <div id="resultado" class="resultado escondido">
-            <h1>🎉 Quiz finalizado!</h1>
-            <p id="mensagem"></p>
-            <h2 id="resultadoPontuacao"></h2>
-            <button onclick="reiniciarQuiz()">Jogar novamente</button>
+        <div id="resultado" class="escondido">
+
+            <h1>🎉 Fim do Quiz!</h1>
+
+            <h2 id="pontuacaoFinal"></h2>
+
+            <p id="mensagemFinal"></p>
+
+            <button id="botaoReiniciar">
+                Jogar novamente
+            </button>
+
         </div>
+
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
