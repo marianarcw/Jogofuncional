@@ -1,240 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Escolar</title>
 
-body {
-    font-family: Arial, sans-serif;
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    background: linear-gradient(
-        135deg,
-        #6a11cb,
-        #2575fc
-    );
+<body>
 
-    min-height: 100vh;
+    <div class="container">
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        <div id="quiz">
 
-    padding: 20px;
-}
+            <h1>🏆 Quiz Escolar</h1>
 
-.container {
-    width: 100%;
-    max-width: 650px;
+            <div class="topo">
+                <span id="contador">Pergunta 1 de 10</span>
+                <span id="pontuacao">Pontos: 0</span>
+            </div>
 
-    background: white;
+            <div class="barra">
+                <div id="progresso"></div>
+            </div>
 
-    padding: 30px;
+            <h2 id="pergunta">Pergunta</h2>
 
-    border-radius: 20px;
+            <div id="opcoes"></div>
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
+            <button id="botaoProximo" disabled>
+                Próxima pergunta
+            </button>
 
-h1 {
-    text-align: center;
+        </div>
 
-    color: #4b0082;
+        <div id="resultado" class="escondido">
 
-    margin-bottom: 25px;
-}
+            <h1>🎉 Fim do Quiz!</h1>
 
-.topo {
-    display: flex;
+            <h2 id="pontuacaoFinal"></h2>
 
-    justify-content: space-between;
+            <p id="mensagemFinal"></p>
 
-    color: #555;
+            <button id="botaoReiniciar">
+                Jogar novamente
+            </button>
 
-    font-weight: bold;
+        </div>
 
-    margin-bottom: 10px;
-}
+    </div>
 
-.barra {
-    width: 100%;
+    <script src="script.js"></script>
 
-    height: 10px;
-
-    background: #ddd;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    margin-bottom: 25px;
-}
-
-#progresso {
-    width: 10%;
-
-    height: 100%;
-
-    background: #6a11cb;
-
-    transition: 0.3s;
-}
-
-#pergunta {
-    font-size: 22px;
-
-    color: #222;
-
-    margin-bottom: 20px;
-}
-
-#opcoes {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 14px;
-}
-
-/* ALTERNATIVAS */
-
-.opcao {
-    width: 100%;
-
-    padding: 18px 20px;
-
-    background: #f7f3ff;
-
-    border: 3px solid #6a11cb;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #222;
-
-    text-align: left;
-
-    transition: 0.2s;
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-}
-
-.opcao:hover {
-    background: #e5d4ff;
-
-    border-color: #4b0082;
-
-    transform: scale(1.02);
-}
-
-/* RESPOSTA CORRETA */
-
-.opcao.correta {
-    background: #70e080 !important;
-
-    border-color: #16852b;
-
-    color: #083b12;
-
-    font-weight: bold;
-}
-
-/* RESPOSTA ERRADA */
-
-.opcao.errada {
-    background: #ff7777 !important;
-
-    border-color: #b30000;
-
-    color: #5c0000;
-
-    font-weight: bold;
-}
-
-/* BOTÕES */
-
-button {
-    width: 100%;
-
-    padding: 15px;
-
-    margin-top: 20px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: #6a11cb;
-
-    color: white;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-button:hover {
-    background: #4b0082;
-}
-
-button:disabled {
-    background: #aaa;
-
-    cursor: not-allowed;
-}
-
-/* RESULTADO */
-
-#resultado {
-    text-align: center;
-}
-
-#resultado h1 {
-    color: #28a745;
-}
-
-#pontuacaoFinal {
-    margin: 20px 0;
-
-    font-size: 28px;
-}
-
-#mensagemFinal {
-    font-size: 20px;
-
-    color: #555;
-}
-
-.escondido {
-    display: none;
-}
-
-/* CELULAR */
-
-@media (max-width: 500px) {
-
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 25px;
-    }
-
-    #pergunta {
-        font-size: 19px;
-    }
-
-    .opcao {
-        font-size: 17px;
-
-        padding: 16px;
-    }
-
-}
+</body>
+</html>
