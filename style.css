@@ -1,201 +1,145 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
-
-    background: linear-gradient(
-        135deg,
-        #4facfe,
-        #6a5acd
-    );
-
+    background: linear-gradient(135deg, #4b0082, #007bff);
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 20px;
 }
 
 .container {
     background: white;
-
     width: 100%;
     max-width: 650px;
-
     padding: 30px;
-
     border-radius: 20px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 h1 {
     text-align: center;
-    color: #333;
-
-    margin-bottom: 10px;
-}
-
-.descricao {
-    text-align: center;
-    color: #666;
-
+    color: #4b0082;
     margin-bottom: 25px;
 }
 
 .info {
     display: flex;
     justify-content: space-between;
-
-    margin-bottom: 20px;
-
+    margin-bottom: 10px;
     font-weight: bold;
-    color: #444;
-}
-
-.pergunta {
-    font-size: 22px;
-    font-weight: bold;
-
-    margin-bottom: 20px;
-
-    color: #222;
-}
-
-.alternativas {
-    display: grid;
-    gap: 12px;
-}
-
-.alternativa {
-    width: 100%;
-
-    padding: 15px;
-
-    border: 2px solid #ddd;
-    border-radius: 10px;
-
-    background: #f8f8f8;
-
-    cursor: pointer;
-
-    font-size: 17px;
-
-    transition: 0.2s;
-}
-
-.alternativa:hover {
-    background: #e8f1ff;
-
-    border-color: #4facfe;
-
-    transform: translateY(-2px);
-}
-
-.alternativa:disabled {
-    cursor: default;
-}
-
-.correta {
-    background: #c8f7c5 !important;
-
-    border-color: #28a745 !important;
-}
-
-.errada {
-    background: #ffc7c7 !important;
-
-    border-color: #dc3545 !important;
-}
-
-button:not(.alternativa) {
-    width: 100%;
-
-    padding: 15px;
-
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 10px;
-
-    background: #4facfe;
-
-    color: white;
-
-    font-size: 18px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-button:not(.alternativa):hover {
-    background: #238de2;
-
-    transform: translateY(-2px);
-}
-
-#resultado {
-    text-align: center;
-}
-
-#resultado h2 {
-    font-size: 30px;
-
-    color: #4facfe;
-
-    margin-bottom: 20px;
-}
-
-#mensagem {
-    font-size: 18px;
-
-    margin-bottom: 15px;
-}
-
-.nota {
-    font-size: 28px;
-
-    font-weight: bold;
-
-    color: #28a745;
-
-    margin: 20px 0;
-}
-
-#resultadoPontos {
-    font-size: 18px;
-
     color: #555;
 }
 
-.oculto {
-    display: none !important;
+.barra {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
 }
 
-@media (max-width: 600px) {
+#progresso {
+    height: 100%;
+    width: 10%;
+    background: #4b0082;
+    transition: width 0.3s;
+}
 
+h2 {
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcao {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.opcao:hover {
+    background: #f0e6ff;
+    border-color: #4b0082;
+}
+
+.opcao.correta {
+    background: #c8f7c5;
+    border-color: #28a745;
+}
+
+.opcao.errada {
+    background: #ffcaca;
+    border-color: #dc3545;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 10px;
+    background: #4b0082;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #35005c;
+}
+
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.resultado {
+    text-align: center;
+}
+
+.resultado h1 {
+    color: #28a745;
+}
+
+.resultado p {
+    font-size: 20px;
+    margin: 20px 0;
+    color: #444;
+}
+
+.escondido {
+    display: none;
+}
+
+@media (max-width: 500px) {
     .container {
         padding: 20px;
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 25px;
     }
 
-    .pergunta {
-        font-size: 19px;
-    }
-
-    .alternativa {
-        font-size: 16px;
+    h2 {
+        font-size: 20px;
     }
 }

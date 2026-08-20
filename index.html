@@ -3,58 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Quiz de Matemática</title>
-
+    <title>Quiz de Conhecimentos Gerais</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <div class="container">
-
         <div id="quiz">
-
-            <h1>🧠 Quiz de Matemática</h1>
-
-            <p class="descricao">
-                Teste seus conhecimentos matemáticos!
-            </p>
+            <h1>🏆 Quiz de Conhecimentos Gerais</h1>
 
             <div class="info">
                 <span id="contador">Pergunta 1 de 10</span>
                 <span id="pontuacao">Pontos: 0</span>
             </div>
 
-            <div id="pergunta" class="pergunta"></div>
+            <div class="barra">
+                <div id="progresso"></div>
+            </div>
 
-            <div id="alternativas" class="alternativas"></div>
+            <h2 id="pergunta">Pergunta</h2>
 
-            <button id="proximo" class="oculto">
-                Próxima pergunta →
+            <div id="opcoes" class="opcoes"></div>
+
+            <button id="proxima" onclick="proximaPergunta()" disabled>
+                Próxima pergunta
             </button>
-
         </div>
 
-        <div id="resultado" class="oculto">
-
-            <h2>🎉 Quiz concluído!</h2>
-
+        <div id="resultado" class="resultado escondido">
+            <h1>🎉 Quiz finalizado!</h1>
             <p id="mensagem"></p>
-
-            <div id="nota" class="nota"></div>
-
-            <p id="resultadoPontos"></p>
-
-            <button id="reiniciar">
-                🔄 Jogar novamente
-            </button>
-
+            <h2 id="resultadoPontuacao"></h2>
+            <button onclick="reiniciarQuiz()">Jogar novamente</button>
         </div>
-
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>

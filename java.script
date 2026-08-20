@@ -1,379 +1,184 @@
 const perguntas = [
-
+    {
+        pergunta: "Qual é o maior planeta do Sistema Solar?",
+        opcoes: ["Terra", "Júpiter", "Saturno", "Marte"],
+        resposta: 1
+    },
+    {
+        pergunta: "Qual é a capital do Brasil?",
+        opcoes: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+        resposta: 2
+    },
+    {
+        pergunta: "Qual processo as plantas utilizam para produzir seu próprio alimento?",
+        opcoes: ["Respiração", "Digestão", "Fotossíntese", "Fermentação"],
+        resposta: 2
+    },
     {
         pergunta: "Quanto é 8 × 7?",
-        alternativas: [
-            "54",
-            "56",
-            "64",
-            "48"
+        opcoes: ["48", "54", "56", "64"],
+        resposta: 2
+    },
+    {
+        pergunta: "Quem escreveu Dom Casmurro?",
+        opcoes: [
+            "José de Alencar",
+            "Machado de Assis",
+            "Monteiro Lobato",
+            "Carlos Drummond de Andrade"
         ],
         resposta: 1
     },
-
     {
-        pergunta: "Quanto é 144 ÷ 12?",
-        alternativas: [
-            "10",
-            "11",
-            "12",
-            "14"
+        pergunta: "Qual é o maior oceano da Terra?",
+        opcoes: [
+            "Oceano Atlântico",
+            "Oceano Índico",
+            "Oceano Ártico",
+            "Oceano Pacífico"
         ],
+        resposta: 3
+    },
+    {
+        pergunta: "Quantos estados existem no Brasil?",
+        opcoes: ["24", "25", "26", "27"],
         resposta: 2
     },
-
     {
-        pergunta: "Qual é a raiz quadrada de 81?",
-        alternativas: [
-            "7",
-            "8",
-            "9",
-            "10"
-        ],
-        resposta: 2
-    },
-
-    {
-        pergunta: "Quanto é 25% de 200?",
-        alternativas: [
-            "25",
-            "40",
-            "50",
-            "75"
-        ],
-        resposta: 2
-    },
-
-    {
-        pergunta: "Qual é o resultado de 15 + 27?",
-        alternativas: [
-            "32",
-            "40",
-            "42",
-            "45"
-        ],
-        resposta: 2
-    },
-
-    {
-        pergunta: "Qual é o valor de 3²?",
-        alternativas: [
-            "6",
-            "9",
-            "12",
-            "15"
-        ],
+        pergunta: "Qual é o resultado de 100 ÷ 4?",
+        opcoes: ["20", "25", "30", "40"],
         resposta: 1
     },
-
     {
-        pergunta: "Um triângulo possui quantos lados?",
-        alternativas: [
-            "2",
-            "3",
-            "4",
-            "5"
-        ],
+        pergunta: "Qual planeta é conhecido como Planeta Vermelho?",
+        opcoes: ["Vênus", "Marte", "Mercúrio", "Netuno"],
         resposta: 1
     },
-
     {
-        pergunta: "Quanto é 1000 - 375?",
-        alternativas: [
-            "525",
-            "625",
-            "675",
-            "725"
-        ],
-        resposta: 1
-    },
-
-    {
-        pergunta: "Qual é a metade de 86?",
-        alternativas: [
-            "41",
-            "42",
-            "43",
-            "44"
-        ],
-        resposta: 2
-    },
-
-    {
-        pergunta:
-            "Se uma dúzia possui 12 unidades, quantas unidades existem em 3 dúzias?",
-
-        alternativas: [
-            "24",
-            "30",
-            "36",
-            "42"
-        ],
-
+        pergunta: "Qual é o idioma oficial do Brasil?",
+        opcoes: ["Espanhol", "Inglês", "Português", "Francês"],
         resposta: 2
     }
-
 ];
 
-
 let perguntaAtual = 0;
-
 let pontos = 0;
-
 let respondeu = false;
 
+const perguntaElemento = document.getElementById("pergunta");
+const opcoesElemento = document.getElementById("opcoes");
+const proximaBotao = document.getElementById("proxima");
+const contadorElemento = document.getElementById("contador");
+const pontuacaoElemento = document.getElementById("pontuacao");
+const progressoElemento = document.getElementById("progresso");
 
-const elementoPergunta =
-    document.getElementById("pergunta");
-
-const elementoAlternativas =
-    document.getElementById("alternativas");
-
-const elementoContador =
-    document.getElementById("contador");
-
-const elementoPontuacao =
-    document.getElementById("pontuacao");
-
-const botaoProximo =
-    document.getElementById("proximo");
-
-const botaoReiniciar =
-    document.getElementById("reiniciar");
-
-
-function mostrarPergunta() {
-
+function carregarPergunta() {
     respondeu = false;
+    proximaBotao.disabled = true;
 
-    const pergunta =
-        perguntas[perguntaAtual];
+    const pergunta = perguntas[perguntaAtual];
 
+    perguntaElemento.textContent = pergunta.pergunta;
 
-    elementoPergunta.textContent =
-        pergunta.pergunta;
-
-
-    elementoContador.textContent =
+    contadorElemento.textContent =
         `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
 
-
-    elementoPontuacao.textContent =
+    pontuacaoElemento.textContent =
         `Pontos: ${pontos}`;
 
+    progressoElemento.style.width =
+        `${((perguntaAtual + 1) / perguntas.length) * 100}%`;
 
-    elementoAlternativas.innerHTML = "";
+    opcoesElemento.innerHTML = "";
 
+    pergunta.opcoes.forEach((opcao, indice) => {
 
-    botaoProximo.classList.add("oculto");
+        const botao = document.createElement("button");
 
+        botao.classList.add("opcao");
+        botao.textContent = opcao;
 
-    pergunta.alternativas.forEach(
-        (alternativa, indice) => {
+        botao.onclick = () => verificarResposta(indice, botao);
 
-            const botao =
-                document.createElement("button");
-
-
-            botao.className =
-                "alternativa";
-
-
-            botao.textContent =
-                alternativa;
-
-
-            botao.addEventListener(
-                "click",
-                () => verificarResposta(
-                    indice,
-                    botao
-                )
-            );
-
-
-            elementoAlternativas.appendChild(
-                botao
-            );
-        }
-    );
+        opcoesElemento.appendChild(botao);
+    });
 }
 
-
-function verificarResposta(
-    indiceEscolhido,
-    botaoEscolhido
-) {
+function verificarResposta(indiceEscolhido, botaoEscolhido) {
 
     if (respondeu) {
         return;
     }
 
-
     respondeu = true;
 
+    const respostaCorreta = perguntas[perguntaAtual].resposta;
+    const botoes = document.querySelectorAll(".opcao");
 
-    const respostaCorreta =
-        perguntas[perguntaAtual].resposta;
+    botoes.forEach((botao, indice) => {
 
+        botao.disabled = true;
 
-    const botoes =
-        document.querySelectorAll(
-            ".alternativa"
-        );
-
-
-    botoes.forEach(
-        (botao, indice) => {
-
-            if (indice === respostaCorreta) {
-
-                botao.classList.add(
-                    "correta"
-                );
-            }
-
-
-            if (
-                indice === indiceEscolhido &&
-                indice !== respostaCorreta
-            ) {
-
-                botao.classList.add(
-                    "errada"
-                );
-            }
-
-
-            botao.disabled = true;
+        if (indice === respostaCorreta) {
+            botao.classList.add("correta");
         }
-    );
+    });
 
-
-    if (
-        indiceEscolhido === respostaCorreta
-    ) {
-
-        pontos += 10;
-
-        elementoPontuacao.textContent =
-            `Pontos: ${pontos}`;
+    if (indiceEscolhido === respostaCorreta) {
+        pontos++;
+        pontuacaoElemento.textContent = `Pontos: ${pontos}`;
+    } else {
+        botaoEscolhido.classList.add("errada");
     }
 
-
-    botaoProximo.classList.remove(
-        "oculto"
-    );
+    proximaBotao.disabled = false;
 }
-
 
 function proximaPergunta() {
 
     perguntaAtual++;
 
-
-    if (
-        perguntaAtual < perguntas.length
-    ) {
-
-        mostrarPergunta();
-
+    if (perguntaAtual < perguntas.length) {
+        carregarPergunta();
     } else {
-
-        finalizarQuiz();
+        mostrarResultado();
     }
 }
 
+function mostrarResultado() {
 
-function finalizarQuiz() {
+    document.getElementById("quiz").classList.add("escondido");
+    document.getElementById("resultado").classList.remove("escondido");
 
-    document
-        .getElementById("quiz")
-        .classList.add("oculto");
+    const resultadoPontuacao =
+        document.getElementById("resultadoPontuacao");
 
+    const mensagem =
+        document.getElementById("mensagem");
 
-    document
-        .getElementById("resultado")
-        .classList.remove("oculto");
+    resultadoPontuacao.textContent =
+        `Você acertou ${pontos} de ${perguntas.length} perguntas!`;
 
-
-    const nota =
-        (pontos / 100) * 10;
-
-
-    document
-        .getElementById("nota")
-        .textContent =
-        `Nota: ${nota.toFixed(1)} / 10`;
-
-
-    document
-        .getElementById("resultadoPontos")
-        .textContent =
-        `Você fez ${pontos} pontos de 100.`;
-
-
-    let mensagem;
-
-
-    if (nota >= 9) {
-
-        mensagem =
-            "🏆 Excelente! Você domina matemática!";
-
-    } else if (nota >= 7) {
-
-        mensagem =
-            "👏 Muito bem! Você foi muito bem!";
-
-    } else if (nota >= 5) {
-
-        mensagem =
-            "🙂 Bom trabalho! Continue estudando!";
-
+    if (pontos === 10) {
+        mensagem.textContent = "🏆 Excelente! Você acertou tudo!";
+    } else if (pontos >= 7) {
+        mensagem.textContent = "👏 Muito bem! Você teve um ótimo resultado!";
+    } else if (pontos >= 5) {
+        mensagem.textContent = "🙂 Bom trabalho! Continue estudando!";
     } else {
-
-        mensagem =
-            "📚 Continue praticando. Você consegue!";
+        mensagem.textContent = "📚 Continue estudando e tente novamente!";
     }
-
-
-    document
-        .getElementById("mensagem")
-        .textContent = mensagem;
 }
-
 
 function reiniciarQuiz() {
 
     perguntaAtual = 0;
-
     pontos = 0;
 
-    document
-        .getElementById("resultado")
-        .classList.add("oculto");
+    document.getElementById("quiz").classList.remove("escondido");
+    document.getElementById("resultado").classList.add("escondido");
 
-
-    document
-        .getElementById("quiz")
-        .classList.remove("oculto");
-
-
-    mostrarPergunta();
+    carregarPergunta();
 }
 
-
-botaoProximo.addEventListener(
-    "click",
-    proximaPergunta
-);
-
-
-botaoReiniciar.addEventListener(
-    "click",
-    reiniciarQuiz
-);
-
-
-mostrarPergunta();
+carregarPergunta();
