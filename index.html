@@ -1,57 +1,236 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Escolar</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+body {
+    font-family: Arial, sans-serif;
 
-<body>
+    background: linear-gradient(
+        135deg,
+        #6a11cb,
+        #2575fc
+    );
 
-    <div class="container">
+    min-height: 100vh;
 
-        <div id="quiz">
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-            <h1>🏆 Quiz Escolar</h1>
+    padding: 20px;
+}
 
-            <div class="topo">
-                <span id="contador">Pergunta 1 de 10</span>
-                <span id="pontuacao">Pontos: 0</span>
-            </div>
+.container {
+    width: 100%;
+    max-width: 650px;
 
-            <div class="barra">
-                <div id="progresso"></div>
-            </div>
+    background: white;
 
-            <h2 id="pergunta">Pergunta</h2>
+    padding: 30px;
 
-            <div id="opcoes"></div>
+    border-radius: 20px;
 
-            <button id="botaoProximo" disabled>
-                Próxima pergunta
-            </button>
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-        </div>
+h1 {
+    text-align: center;
 
-        <div id="resultado" class="escondido">
+    color: #4b0082;
 
-            <h1>🎉 Fim do Quiz!</h1>
+    margin-bottom: 25px;
+}
 
-            <h2 id="pontuacaoFinal"></h2>
+.topo {
+    display: flex;
 
-            <p id="mensagemFinal"></p>
+    justify-content: space-between;
 
-            <button id="botaoReiniciar">
-                Jogar novamente
-            </button>
+    color: #555;
 
-        </div>
+    font-weight: bold;
 
-    </div>
+    margin-bottom: 10px;
+}
 
-    <script src="script.js"></script>
+.barra {
+    width: 100%;
 
-</body>
-</html>
+    height: 10px;
+
+    background: #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+#progresso {
+    width: 10%;
+
+    height: 100%;
+
+    background: #6a11cb;
+
+    transition: 0.3s;
+}
+
+#pergunta {
+    font-size: 22px;
+
+    color: #222;
+
+    margin-bottom: 20px;
+}
+
+#opcoes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+/* ALTERNATIVAS */
+
+.opcao {
+    width: 100%;
+
+    padding: 15px;
+
+    background: white;
+
+    border: 2px solid #ddd;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #000;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+.opcao:hover {
+    background: #f0e6ff;
+
+    border-color: #6a11cb;
+}
+
+/* RESPOSTA CORRETA */
+
+.opcao.correta {
+    background: #b8f5c0;
+
+    border-color: #28a745;
+
+    color: #155724;
+
+    font-weight: bold;
+}
+
+/* RESPOSTA ERRADA */
+
+.opcao.errada {
+    background: #ffb8b8;
+
+    border-color: #dc3545;
+
+    color: #721c24;
+
+    font-weight: bold;
+}
+
+/* BOTÕES */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #6a11cb;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4b0082;
+}
+
+button:disabled {
+    background: #aaa;
+
+    cursor: not-allowed;
+}
+
+/* RESULTADO */
+
+#resultado {
+    text-align: center;
+}
+
+#resultado h1 {
+    color: #28a745;
+}
+
+#pontuacaoFinal {
+    margin: 20px 0;
+
+    font-size: 28px;
+}
+
+#mensagemFinal {
+    font-size: 20px;
+
+    color: #555;
+}
+
+.escondido {
+    display: none;
+}
+
+/* CELULAR */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #pergunta {
+        font-size: 19px;
+    }
+
+    .opcao {
+        font-size: 17px;
+
+        padding: 15px;
+    }
+
+}
