@@ -1,236 +1,60 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-body {
-    font-family: Arial, sans-serif;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    background: linear-gradient(
-        135deg,
-        #6a11cb,
-        #2575fc
-    );
+    <title>Quiz Escolar</title>
 
-    min-height: 100vh;
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+<body>
 
-    padding: 20px;
-}
+    <div class="container">
 
-.container {
-    width: 100%;
-    max-width: 650px;
+        <div id="quiz">
 
-    background: white;
+            <h1>🏆 Quiz Escolar</h1>
 
-    padding: 30px;
+            <div class="topo">
+                <span id="contador">Pergunta 1 de 10</span>
+                <span id="pontuacao">Pontos: 0</span>
+            </div>
 
-    border-radius: 20px;
+            <div class="barra">
+                <div id="progresso"></div>
+            </div>
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
+            <h2 id="pergunta"></h2>
 
-h1 {
-    text-align: center;
+            <div id="opcoes"></div>
 
-    color: #4b0082;
+            <button id="botaoProximo" disabled>
+                Próxima pergunta
+            </button>
 
-    margin-bottom: 25px;
-}
+        </div>
 
-.topo {
-    display: flex;
+        <div id="resultado" class="escondido">
 
-    justify-content: space-between;
+            <h1>🎉 Quiz Finalizado!</h1>
 
-    color: #555;
+            <h2 id="pontuacaoFinal"></h2>
 
-    font-weight: bold;
+            <p id="mensagemFinal"></p>
 
-    margin-bottom: 10px;
-}
+            <button id="botaoReiniciar">
+                Jogar novamente
+            </button>
 
-.barra {
-    width: 100%;
+        </div>
 
-    height: 10px;
+    </div>
 
-    background: #ddd;
+    <script src="script.js"></script>
 
-    border-radius: 10px;
+</body>
 
-    overflow: hidden;
-
-    margin-bottom: 25px;
-}
-
-#progresso {
-    width: 10%;
-
-    height: 100%;
-
-    background: #6a11cb;
-
-    transition: 0.3s;
-}
-
-#pergunta {
-    font-size: 22px;
-
-    color: #222;
-
-    margin-bottom: 20px;
-}
-
-#opcoes {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-}
-
-/* ALTERNATIVAS */
-
-.opcao {
-    width: 100%;
-
-    padding: 15px;
-
-    background: white;
-
-    border: 2px solid #ddd;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #000;
-
-    text-align: left;
-
-    transition: 0.2s;
-}
-
-.opcao:hover {
-    background: #f0e6ff;
-
-    border-color: #6a11cb;
-}
-
-/* RESPOSTA CORRETA */
-
-.opcao.correta {
-    background: #b8f5c0;
-
-    border-color: #28a745;
-
-    color: #155724;
-
-    font-weight: bold;
-}
-
-/* RESPOSTA ERRADA */
-
-.opcao.errada {
-    background: #ffb8b8;
-
-    border-color: #dc3545;
-
-    color: #721c24;
-
-    font-weight: bold;
-}
-
-/* BOTÕES */
-
-button {
-    width: 100%;
-
-    padding: 15px;
-
-    margin-top: 20px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: #6a11cb;
-
-    color: white;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-button:hover {
-    background: #4b0082;
-}
-
-button:disabled {
-    background: #aaa;
-
-    cursor: not-allowed;
-}
-
-/* RESULTADO */
-
-#resultado {
-    text-align: center;
-}
-
-#resultado h1 {
-    color: #28a745;
-}
-
-#pontuacaoFinal {
-    margin: 20px 0;
-
-    font-size: 28px;
-}
-
-#mensagemFinal {
-    font-size: 20px;
-
-    color: #555;
-}
-
-.escondido {
-    display: none;
-}
-
-/* CELULAR */
-
-@media (max-width: 500px) {
-
-    .container {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 25px;
-    }
-
-    #pergunta {
-        font-size: 19px;
-    }
-
-    .opcao {
-        font-size: 17px;
-
-        padding: 15px;
-    }
-
-}
+</html>

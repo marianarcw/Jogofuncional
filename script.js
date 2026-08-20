@@ -39,13 +39,13 @@ const perguntas = [
             "Machado de Assis",
             "Monteiro Lobato",
             "José de Alencar",
-            "Carlos Drummond"
+            "Carlos Drummond de Andrade"
         ],
         correta: 0
     },
 
     {
-        pergunta: "Qual processo permite que as plantas produzam seu alimento usando luz?",
+        pergunta: "Qual processo as plantas usam para produzir seu alimento?",
         opcoes: [
             "Respiração",
             "Fotossíntese",
@@ -118,23 +118,12 @@ let pontos = 0;
 let respondeu = false;
 
 
-const perguntaElemento =
-    document.getElementById("pergunta");
-
-const opcoesElemento =
-    document.getElementById("opcoes");
-
-const contadorElemento =
-    document.getElementById("contador");
-
-const pontuacaoElemento =
-    document.getElementById("pontuacao");
-
-const progressoElemento =
-    document.getElementById("progresso");
-
-const botaoProximo =
-    document.getElementById("botaoProximo");
+const perguntaElemento = document.getElementById("pergunta");
+const opcoesElemento = document.getElementById("opcoes");
+const contadorElemento = document.getElementById("contador");
+const pontuacaoElemento = document.getElementById("pontuacao");
+const progressoElemento = document.getElementById("progresso");
+const botaoProximo = document.getElementById("botaoProximo");
 
 
 function mostrarPergunta() {
@@ -143,11 +132,9 @@ function mostrarPergunta() {
 
     botaoProximo.disabled = true;
 
-    const perguntaAtualObj =
-        perguntas[perguntaAtual];
+    const atual = perguntas[perguntaAtual];
 
-    perguntaElemento.textContent =
-        perguntaAtualObj.pergunta;
+    perguntaElemento.textContent = atual.pergunta;
 
     contadorElemento.textContent =
         "Pergunta " +
@@ -165,33 +152,23 @@ function mostrarPergunta() {
     opcoesElemento.innerHTML = "";
 
 
-    perguntaAtualObj.opcoes.forEach(
-        function(opcao, indice) {
+    atual.opcoes.forEach(function(opcao, indice) {
 
-            const botao =
-                document.createElement("button");
+        const botao = document.createElement("button");
 
-            botao.textContent = opcao;
+        botao.textContent = opcao;
 
-            botao.classList.add("opcao");
+        botao.className = "opcao";
 
-            botao.addEventListener(
-                "click",
-                function() {
+        botao.addEventListener("click", function() {
 
-                    verificarResposta(
-                        indice,
-                        botao
-                    );
+            verificarResposta(indice, botao);
 
-                }
-            );
+        });
 
-            opcoesElemento.appendChild(botao);
+        opcoesElemento.appendChild(botao);
 
-        }
-    );
-
+    });
 }
 
 
@@ -210,13 +187,11 @@ function verificarResposta(indice, botao) {
         document.querySelectorAll(".opcao");
 
 
-    botoes.forEach(
-        function(botao) {
+    botoes.forEach(function(botao) {
 
-            botao.disabled = true;
+        botao.disabled = true;
 
-        }
-    );
+    });
 
 
     if (indice === respostaCorreta) {
@@ -239,31 +214,25 @@ function verificarResposta(indice, botao) {
 
 
     botaoProximo.disabled = false;
-
 }
 
 
-botaoProximo.addEventListener(
-    "click",
-    function() {
+botaoProximo.addEventListener("click", function() {
 
-        perguntaAtual++;
+    perguntaAtual++;
 
-        if (
-            perguntaAtual <
-            perguntas.length
-        ) {
 
-            mostrarPergunta();
+    if (perguntaAtual < perguntas.length) {
 
-        } else {
+        mostrarPergunta();
 
-            mostrarResultado();
+    } else {
 
-        }
+        mostrarResultado();
 
     }
-);
+
+});
 
 
 function mostrarResultado() {
@@ -280,13 +249,14 @@ function mostrarResultado() {
     document
         .getElementById("pontuacaoFinal")
         .textContent =
+        "Você fez " +
         pontos +
-        " / " +
+        " de " +
         perguntas.length +
-        " pontos";
+        " pontos!";
 
 
-    let mensagem = "";
+    let mensagem;
 
 
     if (pontos === 10) {
@@ -297,17 +267,17 @@ function mostrarResultado() {
     } else if (pontos >= 8) {
 
         mensagem =
-            "👏 Excelente! Você foi muito bem!";
+            "👏 Excelente resultado!";
 
     } else if (pontos >= 6) {
 
         mensagem =
-            "😊 Muito bom! Continue estudando!";
+            "😊 Muito bom!";
 
     } else if (pontos >= 4) {
 
         mensagem =
-            "📚 Bom esforço! Você pode melhorar!";
+            "📚 Bom esforço! Continue estudando!";
 
     } else {
 
@@ -326,26 +296,23 @@ function mostrarResultado() {
 
 document
     .getElementById("botaoReiniciar")
-    .addEventListener(
-        "click",
-        function() {
+    .addEventListener("click", function() {
 
-            perguntaAtual = 0;
+        perguntaAtual = 0;
 
-            pontos = 0;
+        pontos = 0;
 
-            document
-                .getElementById("resultado")
-                .classList.add("escondido");
+        document
+            .getElementById("resultado")
+            .classList.add("escondido");
 
-            document
-                .getElementById("quiz")
-                .classList.remove("escondido");
+        document
+            .getElementById("quiz")
+            .classList.remove("escondido");
 
-            mostrarPergunta();
+        mostrarPergunta();
 
-        }
-    );
+    });
 
 
 mostrarPergunta();

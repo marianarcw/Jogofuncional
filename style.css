@@ -1,17 +1,13 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
 
-    background: linear-gradient(
-        135deg,
-        #6a11cb,
-        #2575fc
-    );
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
 
     min-height: 100vh;
 
@@ -23,17 +19,16 @@ body {
 }
 
 .container {
+    background: white;
+
     width: 100%;
     max-width: 650px;
-
-    background: white;
 
     padding: 30px;
 
     border-radius: 20px;
 
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -49,11 +44,11 @@ h1 {
 
     justify-content: space-between;
 
+    margin-bottom: 10px;
+
     color: #555;
 
     font-weight: bold;
-
-    margin-bottom: 10px;
 }
 
 .barra {
@@ -81,7 +76,7 @@ h1 {
 }
 
 #pergunta {
-    font-size: 22px;
+    font-size: 23px;
 
     color: #222;
 
@@ -96,20 +91,28 @@ h1 {
     gap: 12px;
 }
 
+/* ALTERNATIVAS */
+
 .opcao {
     width: 100%;
 
-    padding: 15px;
+    padding: 17px;
 
-    background: white;
+    background: #ffffff;
 
-    border: 2px solid #ddd;
+    border: 2px solid #6a11cb;
 
     border-radius: 10px;
 
     cursor: pointer;
 
-    font-size: 16px;
+    font-family: Arial, sans-serif;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: #000000;
 
     text-align: left;
 
@@ -117,26 +120,30 @@ h1 {
 }
 
 .opcao:hover {
-    background: #f0e6ff;
-
-    border-color: #6a11cb;
+    background: #eee5ff;
 }
+
+/* RESPOSTA CERTA */
 
 .opcao.correta {
-    background: #b8f5c0;
+    background: #a8e6b0;
 
-    border-color: #28a745;
+    border-color: #16852b;
 
-    color: #155724;
+    color: #000000;
 }
+
+/* RESPOSTA ERRADA */
 
 .opcao.errada {
-    background: #ffb8b8;
+    background: #ffaaaa;
 
-    border-color: #dc3545;
+    border-color: #b30000;
 
-    color: #721c24;
+    color: #000000;
 }
+
+/* BOTÕES */
 
 button {
     width: 100%;
@@ -165,10 +172,12 @@ button:hover {
 }
 
 button:disabled {
-    background: #aaa;
+    background: #999;
 
     cursor: not-allowed;
 }
+
+/* RESULTADO */
 
 #resultado {
     text-align: center;
@@ -188,11 +197,15 @@ button:disabled {
     font-size: 20px;
 
     color: #555;
+
+    margin-bottom: 10px;
 }
 
 .escondido {
     display: none;
 }
+
+/* CELULAR */
 
 @media (max-width: 500px) {
 
@@ -205,7 +218,11 @@ button:disabled {
     }
 
     #pergunta {
-        font-size: 19px;
+        font-size: 20px;
     }
 
+    .opcao {
+        font-size: 18px;
+        padding: 16px;
+    }
 }
