@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz de Matemática</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="quiz">
+
+            <h1>🧠 Quiz de Matemática</h1>
+
+            <p class="descricao">
+                Teste seus conhecimentos matemáticos!
+            </p>
+
+            <div class="info">
+                <span id="contador">Pergunta 1 de 10</span>
+                <span id="pontuacao">Pontos: 0</span>
+            </div>
+
+            <div id="pergunta" class="pergunta"></div>
+
+            <div id="alternativas" class="alternativas"></div>
+
+            <button id="proximo" class="oculto">
+                Próxima pergunta →
+            </button>
+
+        </div>
+
+        <div id="resultado" class="oculto">
+
+            <h2>🎉 Quiz concluído!</h2>
+
+            <p id="mensagem"></p>
+
+            <div id="nota" class="nota"></div>
+
+            <p id="resultadoPontos"></p>
+
+            <button id="reiniciar">
+                🔄 Jogar novamente
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

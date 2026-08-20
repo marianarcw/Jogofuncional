@@ -1,0 +1,379 @@
+const perguntas = [
+
+    {
+        pergunta: "Quanto é 8 × 7?",
+        alternativas: [
+            "54",
+            "56",
+            "64",
+            "48"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Quanto é 144 ÷ 12?",
+        alternativas: [
+            "10",
+            "11",
+            "12",
+            "14"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta: "Qual é a raiz quadrada de 81?",
+        alternativas: [
+            "7",
+            "8",
+            "9",
+            "10"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta: "Quanto é 25% de 200?",
+        alternativas: [
+            "25",
+            "40",
+            "50",
+            "75"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta: "Qual é o resultado de 15 + 27?",
+        alternativas: [
+            "32",
+            "40",
+            "42",
+            "45"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta: "Qual é o valor de 3²?",
+        alternativas: [
+            "6",
+            "9",
+            "12",
+            "15"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Um triângulo possui quantos lados?",
+        alternativas: [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Quanto é 1000 - 375?",
+        alternativas: [
+            "525",
+            "625",
+            "675",
+            "725"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Qual é a metade de 86?",
+        alternativas: [
+            "41",
+            "42",
+            "43",
+            "44"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta:
+            "Se uma dúzia possui 12 unidades, quantas unidades existem em 3 dúzias?",
+
+        alternativas: [
+            "24",
+            "30",
+            "36",
+            "42"
+        ],
+
+        resposta: 2
+    }
+
+];
+
+
+let perguntaAtual = 0;
+
+let pontos = 0;
+
+let respondeu = false;
+
+
+const elementoPergunta =
+    document.getElementById("pergunta");
+
+const elementoAlternativas =
+    document.getElementById("alternativas");
+
+const elementoContador =
+    document.getElementById("contador");
+
+const elementoPontuacao =
+    document.getElementById("pontuacao");
+
+const botaoProximo =
+    document.getElementById("proximo");
+
+const botaoReiniciar =
+    document.getElementById("reiniciar");
+
+
+function mostrarPergunta() {
+
+    respondeu = false;
+
+    const pergunta =
+        perguntas[perguntaAtual];
+
+
+    elementoPergunta.textContent =
+        pergunta.pergunta;
+
+
+    elementoContador.textContent =
+        `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+
+
+    elementoPontuacao.textContent =
+        `Pontos: ${pontos}`;
+
+
+    elementoAlternativas.innerHTML = "";
+
+
+    botaoProximo.classList.add("oculto");
+
+
+    pergunta.alternativas.forEach(
+        (alternativa, indice) => {
+
+            const botao =
+                document.createElement("button");
+
+
+            botao.className =
+                "alternativa";
+
+
+            botao.textContent =
+                alternativa;
+
+
+            botao.addEventListener(
+                "click",
+                () => verificarResposta(
+                    indice,
+                    botao
+                )
+            );
+
+
+            elementoAlternativas.appendChild(
+                botao
+            );
+        }
+    );
+}
+
+
+function verificarResposta(
+    indiceEscolhido,
+    botaoEscolhido
+) {
+
+    if (respondeu) {
+        return;
+    }
+
+
+    respondeu = true;
+
+
+    const respostaCorreta =
+        perguntas[perguntaAtual].resposta;
+
+
+    const botoes =
+        document.querySelectorAll(
+            ".alternativa"
+        );
+
+
+    botoes.forEach(
+        (botao, indice) => {
+
+            if (indice === respostaCorreta) {
+
+                botao.classList.add(
+                    "correta"
+                );
+            }
+
+
+            if (
+                indice === indiceEscolhido &&
+                indice !== respostaCorreta
+            ) {
+
+                botao.classList.add(
+                    "errada"
+                );
+            }
+
+
+            botao.disabled = true;
+        }
+    );
+
+
+    if (
+        indiceEscolhido === respostaCorreta
+    ) {
+
+        pontos += 10;
+
+        elementoPontuacao.textContent =
+            `Pontos: ${pontos}`;
+    }
+
+
+    botaoProximo.classList.remove(
+        "oculto"
+    );
+}
+
+
+function proximaPergunta() {
+
+    perguntaAtual++;
+
+
+    if (
+        perguntaAtual < perguntas.length
+    ) {
+
+        mostrarPergunta();
+
+    } else {
+
+        finalizarQuiz();
+    }
+}
+
+
+function finalizarQuiz() {
+
+    document
+        .getElementById("quiz")
+        .classList.add("oculto");
+
+
+    document
+        .getElementById("resultado")
+        .classList.remove("oculto");
+
+
+    const nota =
+        (pontos / 100) * 10;
+
+
+    document
+        .getElementById("nota")
+        .textContent =
+        `Nota: ${nota.toFixed(1)} / 10`;
+
+
+    document
+        .getElementById("resultadoPontos")
+        .textContent =
+        `Você fez ${pontos} pontos de 100.`;
+
+
+    let mensagem;
+
+
+    if (nota >= 9) {
+
+        mensagem =
+            "🏆 Excelente! Você domina matemática!";
+
+    } else if (nota >= 7) {
+
+        mensagem =
+            "👏 Muito bem! Você foi muito bem!";
+
+    } else if (nota >= 5) {
+
+        mensagem =
+            "🙂 Bom trabalho! Continue estudando!";
+
+    } else {
+
+        mensagem =
+            "📚 Continue praticando. Você consegue!";
+    }
+
+
+    document
+        .getElementById("mensagem")
+        .textContent = mensagem;
+}
+
+
+function reiniciarQuiz() {
+
+    perguntaAtual = 0;
+
+    pontos = 0;
+
+    document
+        .getElementById("resultado")
+        .classList.add("oculto");
+
+
+    document
+        .getElementById("quiz")
+        .classList.remove("oculto");
+
+
+    mostrarPergunta();
+}
+
+
+botaoProximo.addEventListener(
+    "click",
+    proximaPergunta
+);
+
+
+botaoReiniciar.addEventListener(
+    "click",
+    reiniciarQuiz
+);
+
+
+mostrarPergunta();

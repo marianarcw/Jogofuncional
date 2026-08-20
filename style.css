@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #4facfe,
+        #6a5acd
+    );
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    background: white;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+
+    margin-bottom: 10px;
+}
+
+.descricao {
+    text-align: center;
+    color: #666;
+
+    margin-bottom: 25px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+    color: #444;
+}
+
+.pergunta {
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+    color: #222;
+}
+
+.alternativas {
+    display: grid;
+    gap: 12px;
+}
+
+.alternativa {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+    background: #f8f8f8;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: 0.2s;
+}
+
+.alternativa:hover {
+    background: #e8f1ff;
+
+    border-color: #4facfe;
+
+    transform: translateY(-2px);
+}
+
+.alternativa:disabled {
+    cursor: default;
+}
+
+.correta {
+    background: #c8f7c5 !important;
+
+    border-color: #28a745 !important;
+}
+
+.errada {
+    background: #ffc7c7 !important;
+
+    border-color: #dc3545 !important;
+}
+
+button:not(.alternativa) {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #4facfe;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:not(.alternativa):hover {
+    background: #238de2;
+
+    transform: translateY(-2px);
+}
+
+#resultado {
+    text-align: center;
+}
+
+#resultado h2 {
+    font-size: 30px;
+
+    color: #4facfe;
+
+    margin-bottom: 20px;
+}
+
+#mensagem {
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.nota {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #28a745;
+
+    margin: 20px 0;
+}
+
+#resultadoPontos {
+    font-size: 18px;
+
+    color: #555;
+}
+
+.oculto {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .pergunta {
+        font-size: 19px;
+    }
+
+    .alternativa {
+        font-size: 16px;
+    }
+}
